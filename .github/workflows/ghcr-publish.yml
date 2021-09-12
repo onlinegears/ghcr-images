@@ -46,3 +46,10 @@ jobs:
           context: devel
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:latest
+
+      - name: Build and push Docker image firefox
+        uses: docker/build-push-action@v2
+        with:
+          context: firefox
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/firefox:latest
