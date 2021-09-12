@@ -33,9 +33,16 @@ jobs:
 
       # Build and push Docker image with Buildx
       # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
+      - name: Build and push Docker image: base
         uses: docker/build-push-action@v2
         with:
           context: base
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/base:latest
+
+      - name: Build and push Docker image: devel
+        uses: docker/build-push-action@v2
+        with:
+          context: devel
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:latest
