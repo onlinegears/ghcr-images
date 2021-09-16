@@ -2,7 +2,8 @@ name: ghcr publish
 
 on:
   schedule:
-    - cron: '31 22 * * *'
+    # Run every Sunday 22:31 UTC
+    - cron: '31 22 * * 0'
   push:
     branches: [ main ]
 
