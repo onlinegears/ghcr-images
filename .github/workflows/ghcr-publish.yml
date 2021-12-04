@@ -54,3 +54,10 @@ jobs:
           context: firefox
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/firefox:latest
+
+      - name: Build and push Docker image isolinux
+        uses: docker/build-push-action@v2
+        with:
+          context: isolinux
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/isolinux:latest
