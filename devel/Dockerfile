@@ -6,5 +6,5 @@ RUN apt-get update \
 		autoconf \
 		cmake \
 		git \
-		bison flex \
+		bison flex nasm \
 	&& apt-get clean
