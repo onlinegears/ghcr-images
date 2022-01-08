@@ -7,4 +7,5 @@ RUN apt-get update \
 		cmake \
 		git \
 		bison flex nasm \
+		strace gdb \
 	&& apt-get clean
