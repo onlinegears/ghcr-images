@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-# Minimal tools
+# Minimal tools and set Timezone
 RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
 		ca-certificates \
@@ -11,6 +11,5 @@ RUN apt-get update \
 		xz-utils \
 		tzdata \
 		less \
-	&& apt-get clean
-# Timezone
-RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+	&& apt-get clean \
+	&& ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
