@@ -48,6 +48,20 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:latest
 
+      - name: Build and push Docker image gtk3
+        uses: docker/build-push-action@v2
+        with:
+          context: gtk3
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/gtk3:latest
+
+      - name: Build and push Docker image chrome
+        uses: docker/build-push-action@v2
+        with:
+          context: chrome
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/chrome:latest
+
       - name: Build and push Docker image firefox
         uses: docker/build-push-action@v2
         with:
