@@ -8,4 +8,5 @@ RUN apt-get update \
 		git \
 		bison flex nasm \
 		strace gdb \
-	&& apt-get clean
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
