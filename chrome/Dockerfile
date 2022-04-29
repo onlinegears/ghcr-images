@@ -5,6 +5,7 @@ RUN apt-get update \
 		fonts-liberation \
 		libdrm2 libgbm1 libnspr4 libnss3 \
 		wget xdg-utils \
+		libasound2 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
