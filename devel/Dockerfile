@@ -10,3 +10,6 @@ RUN apt-get update \
 		strace gdb \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
+RUN curl -vLO https://go.dev/dl/go1.18.3.linux-amd64.tar.gz \
+	&& tar -zxf go1.18.3.linux-amd64.tar.gz -C /usr/local \
+	&& rm go1.18.3.linux-amd64.tar.gz
