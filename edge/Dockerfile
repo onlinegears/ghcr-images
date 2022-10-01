@@ -1,0 +1,15 @@
+FROM ghcr.io/onlinegears/gtk3:latest
+
+RUN apt-get update \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+		fonts-liberation \
+		libdrm2 libgbm1 libnspr4 libnss3 \
+		wget xdg-utils \
+		libasound2 \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+
+RUN edge=microsoft-edge-stable_105.0.1343.53-1_amd64.deb \
+	&& curl -O https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/$edge \
+	&& dpkg -i $edge \
+	&& rm -f $edge
