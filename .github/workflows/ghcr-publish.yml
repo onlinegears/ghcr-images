@@ -10,6 +10,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
+  VERSION: latest
 
 jobs:
   build-base:
@@ -39,7 +40,7 @@ jobs:
         with:
           context: base
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/base:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/base:${{ env.VERSION }}
 
   build-isolinux:
 
@@ -69,7 +70,7 @@ jobs:
         with:
           context: isolinux
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/isolinux:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/isolinux:${{ env.VERSION }}
 
   build-devel:
 
@@ -99,21 +100,21 @@ jobs:
         with:
           context: devel
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:${{ env.VERSION }}
 
       - name: Build and push Docker image isolinux
         uses: docker/build-push-action@v2
         with:
           context: isolinux
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/isolinux:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/isolinux:${{ env.VERSION }}
 
       - name: Build and push Docker image ghidra
         uses: docker/build-push-action@v2
         with:
           context: ghidra
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/ghidra:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/ghidra:${{ env.VERSION }}
 
   build-gtk3:
 
@@ -143,7 +144,7 @@ jobs:
         with:
           context: gtk3
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/gtk3:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/gtk3:${{ env.VERSION }}
 
   build-browser-chrome:
 
@@ -173,7 +174,7 @@ jobs:
         with:
           context: chrome
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/chrome:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/chrome:${{ env.VERSION }}
 
   build-browser-edge:
 
@@ -203,7 +204,7 @@ jobs:
         with:
           context: edge
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/edge:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/edge:${{ env.VERSION }}
 
   build-browser-firefox:
 
@@ -233,4 +234,4 @@ jobs:
         with:
           context: firefox
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/firefox:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/firefox:${{ env.VERSION }}
