@@ -102,13 +102,6 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:${{ env.VERSION }}
 
-      - name: Build and push Docker image isolinux
-        uses: docker/build-push-action@v2
-        with:
-          context: isolinux
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/isolinux:${{ env.VERSION }}
-
       - name: Build and push Docker image ghidra
         uses: docker/build-push-action@v2
         with:
