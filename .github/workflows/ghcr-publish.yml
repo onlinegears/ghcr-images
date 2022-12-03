@@ -103,7 +103,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:${{ env.VERSION }}
 
       - name: Build and push Docker image ghidra
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ghidra
           push: true
