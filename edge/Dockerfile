@@ -9,7 +9,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN edge=microsoft-edge-stable_105.0.1343.53-1_amd64.deb \
+RUN edge=microsoft-edge-stable_109.0.1518.49-1_amd64.deb \
 	&& curl -O https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/$edge \
 	&& dpkg -i $edge \
 	&& rm -f $edge
