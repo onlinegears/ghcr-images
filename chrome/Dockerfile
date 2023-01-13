@@ -4,6 +4,7 @@ RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 		fonts-liberation \
 		libdrm2 libgbm1 libnspr4 libnss3 \
+		libu2f-udev mesa-vulkan-drivers \
 		wget xdg-utils \
 		libasound2 \
 	&& apt-get clean \
