@@ -102,12 +102,61 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/devel:${{ env.VERSION }}
 
+  build-ghidra:
+    runs-on: ubuntu-latest
+    needs: [build-devel]
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Login against a Docker registry
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push Docker image ghidra
         uses: docker/build-push-action@v3
         with:
           context: ghidra
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/ghidra:${{ env.VERSION }}
+
+  build-pico:
+    runs-on: ubuntu-latest
+    needs: [build-devel]
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Login against a Docker registry
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and push Docker image with Buildx
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image pico
+        uses: docker/build-push-action@v3
+        with:
+          context: pico
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/pico:${{ env.VERSION }}
 
   build-gtk3:
 
