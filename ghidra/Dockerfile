@@ -7,7 +7,7 @@ RUN apt-get update \
 	&& apt-get clean
 
 RUN (cd /opt; \
-	curl -LO https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.2.2_build/ghidra_10.2.2_PUBLIC_20221115.zip; \
-	unzip ghidra_10.2.2_PUBLIC_20221115.zip; \
-	rm -f ghidra_10.2.2_PUBLIC_20221115.zip; \
-	ln -sf ghidra_10.2.2_PUBLIC ghidra)
+	curl -LO https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.2.3_build/ghidra_10.2.3_PUBLIC_20230208.zip; \
+	unzip ghidra_10.2.3_PUBLIC_20230208.zip; \
+	rm -f ghidra_10.2.3_PUBLIC_20230208.zip; \
+	ln -sf ghidra_10.2.3_PUBLIC ghidra)
