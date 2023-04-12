@@ -7,6 +7,6 @@ RUN apt-get update \
 		locales-all fonts-noto \
 		fcitx-mozc \
 		tigervnc-standalone-server \
-		novnc websockify
+		novnc websockify \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
