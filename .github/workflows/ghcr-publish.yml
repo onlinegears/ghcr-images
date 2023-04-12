@@ -307,3 +307,33 @@ jobs:
           context: firefox
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/firefox:${{ env.VERSION }}
+
+  build-novnc-firefox:
+
+    runs-on: ubuntu-latest
+    needs: [build-novnc]
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Login against a Docker registry
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and push Docker image with Buildx
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image novnc-firefox
+        uses: docker/build-push-action@v3
+        with:
+          context: novnc-firefox
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/novnc-firefox:${{ env.VERSION }}
